@@ -13,8 +13,28 @@ for letter in palindrometest.lower():
         input_letters.append(letter)
 print(input_letters)
 
-#Compare the string forwards with the string backwards to determine if palindrome
-if input_letters[:] == input_letters[::-1]:
-    print("The input " + str(palindrometest) + " is a palindrome.")
-else:
-    print("The input " + str(palindrometest) + " is not a palindrome.")
+#Iterative function to determine if string is palindrome
+def palindrome_iteration(input_letters):
+    """Compare letters in input_letters to determine if palindrome."""
+    counter = 0
+    endcounter = len(input_letters) - 1
+    if len(input_letters) == 1 or len(input_letters) == 0:
+        palindrome = "The input " + str(palindrometest) + " is a palindrome."
+        return print(str(palindrome))
+    elif input_letters[0] != input_letters[-1]:
+        not_palindrome = "The input " + str(palindrometest) + " is not a palindrome."
+        return print(str(not_palindrome))
+    elif input_letters[counter] == input_letters[endcounter]:
+        while counter <= len(input_letters):
+            if input_letters[counter] == input_letters[endcounter]:
+                counter += 1
+                endcounter -= 1
+                palindrome = "The input " + str(palindrometest) + " is a palindrome."
+                return print(str(palindrome))
+            else:
+                not_palindrome = "The input " + str(palindrometest) + " is not a palindrome."
+                return print(str(not_palindrome))
+    else:
+        return print(str(palindrome))
+
+palindrome_iteration(input_letters)
